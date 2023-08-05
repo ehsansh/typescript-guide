@@ -10,7 +10,6 @@
 
 // console.log(company);
 
-new google.maps.Map(document.getElementById('map')!, {
-    zoom: 1,
-    center: new google.maps.LatLng(0, 0),
-});
+import { CustomMap } from './CustomMap';
+
+const customMap = new CustomMap('map');

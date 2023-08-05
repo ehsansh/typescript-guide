@@ -581,10 +581,51 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 // console.log(user);
 // const company = new Company();
 // console.log(company);
-new google.maps.Map(document.getElementById("map"), {
-    zoom: 1,
-    center: new google.maps.LatLng(0, 0)
-});
+var _customMap = require("./CustomMap");
+const customMap = new (0, _customMap.CustomMap)("map");
+
+},{"./CustomMap":"4qzxZ"}],"4qzxZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CustomMap", ()=>CustomMap);
+class CustomMap {
+    constructor(id){
+        this.googleMap = new google.maps.Map(document.getElementById(id), {
+            zoom: 1,
+            center: new google.maps.LatLng(0, 0)
+        });
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"iGm7n"}],"iGm7n":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["4Ho2I","h7u1C"], "h7u1C", "parcelRequire94c2")
 
