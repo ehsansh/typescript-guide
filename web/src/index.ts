@@ -1,5 +1,9 @@
-// import { User } from './models/User';
+import { User } from './models/User';
 
-// const user = new User({ name: 'new record', age: 0 });
+const user = new User({ id: 1 });
 
-// user.save();
+user.on('change', () => {
+    console.log('something has changes');
+});
+
+user.fetch();
