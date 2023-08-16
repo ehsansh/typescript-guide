@@ -24,8 +24,14 @@ router.get('/login', (req: Request, res: Response) => {
 
 router.post('/login', (req: RequestWithBody, res: Response) => {
     const { email, password } = req.body;
-    if (email) {
-        res.send(email.toLowerCase());
+    if (
+        email &&
+        password &&
+        email === 'ehsan@gmail.com' &&
+        password === '123'
+    ) {
+        req.session = { loggedIn: true };
+        res.redirect('/');
     } else {
         res.send('provide an email');
     }
