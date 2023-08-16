@@ -37,7 +37,7 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
     }
 });
 
-router.post('/', (req: Request, res: Response) => {
+router.get('/', (req: Request, res: Response) => {
     if (req.session?.loggedIn) {
         res.send(`
             <div>
@@ -53,6 +53,11 @@ router.post('/', (req: Request, res: Response) => {
             </div>
         `);
     }
+});
+
+router.get('/logout', (req: Request, res: Response) => {
+    req.session = undefined;
+    res.redirect('/');
 });
 
 export { router };
