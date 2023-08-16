@@ -1,7 +1,15 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 
 interface RequestWithBody extends Request {
     body: { [key: string]: string | undefined };
+}
+
+function requireAuth(req: Request, res: Response, next: NextFunction) {
+    if (req.session?.loggedIn) {
+        next();
+        return;
+    }
+    res.status(403).send('Not permitted.');
 }
 
 const router = Router();
@@ -11,7 +19,7 @@ router.get('/login', (req: Request, res: Response) => {
         <form method="POST">
             <div>
                 <label>Email</label>
-                <input name="em" />
+                <input name="email" />
             </div>
             <div>
                 <label>Password</label>
@@ -24,6 +32,7 @@ router.get('/login', (req: Request, res: Response) => {
 
 router.post('/login', (req: RequestWithBody, res: Response) => {
     const { email, password } = req.body;
+    console.log(email, password);
     if (
         email &&
         password &&
@@ -58,6 +67,10 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/logout', (req: Request, res: Response) => {
     req.session = undefined;
     res.redirect('/');
+});
+
+router.get('/protected', requireAuth, (req: Request, res: Response) => {
+    res.send('Welcome to protected route.');
 });
 
 export { router };
