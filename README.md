@@ -1,8 +1,8 @@
-# Project Name
+# Typescript: The Complete Developer's Guide
 
 Welcome to my project! In this repository, I've documented my progress in completing Stephen Grider's comprehensive developer guide course on TypeScript. Throughout the course, I actively coded along with all sections, gaining valuable insights and skills.
 
-## Typescript: The Complete Developer's Guide
+## What I learned
 
 This course covered a wide range of topics, enabling me to grasp various concepts and techniques:
 
